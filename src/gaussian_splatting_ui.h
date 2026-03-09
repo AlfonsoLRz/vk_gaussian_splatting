@@ -120,46 +120,16 @@ public:  // Methods specializing IAppElement
 
   void onUIRender() override;
 
-  void onUIMenu() override;
-
-  void onFileDrop(const std::filesystem::path& filename) override;
-
   // handle recent files save/load at imgui level
   void guiRegisterIniFileHandlers();
 
 private:
-  void guiDrawAssetsWindow(void);
-  void guiDrawRendererTree();
-  void guiDrawCameraTree();
-  void guiDrawLightTree();
-  void guiDrawRadianceFieldsTree();
-  void guiDrawObjectTree();
-
-  void guiDrawPropertiesWindow(void);
-  void guiDrawRendererProperties();
-  void guiDrawSplatSetProperties();
-  void guiDrawMeshTransformProperties();
-  void guiDrawMeshMaterialProperties();
-  void guiDrawCameraProperties();
-  void guiDrawNavigationProperties();
-  void guiDrawLightProperties();
-
-  void guiDrawRendererStatisticsWindow();
-
-  void guiDrawMemoryStatisticsWindow(void);
-
-  void guiDrawDebugWindow(void);
-
-  void guiDrawFooterBar(void);
 
   bool guiGetTransform(glm::vec3& scale, glm::vec3& rotation, glm::vec3& translation, glm::mat4& transform, glm::mat4& transformInv, bool disabled /*=false*/);
 
   // methods to handle recent files in file menu
   void guiAddToRecentFiles(std::filesystem::path filePath, int historySize = 20);
   void guiAddToRecentProjects(std::filesystem::path filePath, int historySize = 20);
-
-  bool loadProjectIfNeeded();
-  bool saveProject(std::string path);
 
 private:
   // hide/show ui elements
@@ -218,8 +188,6 @@ private:
   bool loadingProject = false;
   json data;
 
-  // Debuging
-  void dumpSplat(uint32_t splatIdx);
 };
 
 }  // namespace vk_gaussian_splatting
